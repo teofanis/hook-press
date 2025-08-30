@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Teofanis Papadopulos <teos_97@hotmail.com>
+Copyright (c) Teofanis Papadopulos <hook-press@teofanis-cloud.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

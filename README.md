@@ -261,11 +261,6 @@ Build time scales with your classmap size, but it’s a one-off step during Comp
 Runtime lookups are reading from a single array in a PHP file or a cache item.
 
 You can switch to the cache driver if you prefer not to ship a file under bootstrap/cache.
-## Testing
-
-```bash
-composer test
-```
 
 ## Changelog
 
