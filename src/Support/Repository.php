@@ -10,6 +10,8 @@ class Repository
 {
     protected const DEFAULT_FILE_CACHE_PATH = 'bootstrap/cache/hook-press.php';
 
+    protected const DEFAULT_CACHE_KEY = 'hook-press:map';
+
     public function __construct(
         protected Filesystem $files,
         protected array $config

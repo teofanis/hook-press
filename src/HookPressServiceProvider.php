@@ -55,27 +55,19 @@ class HookPressServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        require_once __DIR__.'/polyfills.php';
+        $this->loadPolyfills();
+        $this->configureBindings();
+    }
 
+    private function configureBindings(): void
+    {
         $this->app->singleton(Repository::class, fn (Application $app): \HookPress\Support\Repository => new Repository($app->make(Filesystem::class), $app['config']->get('hook-press.store')));
         $this->app->singleton(Inspector::class, fn (): \HookPress\Support\Inspector => new Inspector);
 
         $this->app->singleton(Scanner::class, fn (Application $app): \HookPress\Support\Scanner => new Scanner($app['config']->get('hook-press.roots')));
 
         $this->app->singleton(ConditionEvaluator::class, function (Application $app): \HookPress\Support\ConditionEvaluator {
-            // Built-in conditions registry
-            $builtIns = [
-                'isInstantiable' => new IsInstantiable,
-                'implementsInterface' => new ImplementsInterface,
-                'usesTrait' => new UsesTrait,
-                'hasAttribute' => new HasAttribute,
-                'extends' => new ExtendsClass,
-                'isAbstract' => new IsAbstract,
-                'isFinal' => new IsFinal,
-                'hasMethod' => new HasMethod,
-                'hasProperty' => new HasProperty,
-                'nameMatches' => new NameMatches,
-            ];
+            $builtIns = $this->getBuiltIns();
 
             return new ConditionEvaluator($app, $builtIns);
         });
@@ -87,9 +79,30 @@ class HookPressServiceProvider extends PackageServiceProvider
             $app['config']->get('hook-press')
         ));
 
-        $this->app->singleton(HookPressManager::class, fn ($app): \HookPress\Support\HookPressManager => new HookPressManager(
+        $this->app->singleton(HookPressManager::class, fn (Application $app): \HookPress\Support\HookPressManager => new HookPressManager(
             $app->make(Repository::class),
             $app->make(Mapper::class)
         ));
+    }
+
+    private function loadPolyfills(): void
+    {
+        require_once __DIR__.'/polyfills.php';
+    }
+
+    private function getBuiltIns(): array
+    {
+        return [
+            'isInstantiable' => new IsInstantiable,
+            'implementsInterface' => new ImplementsInterface,
+            'usesTrait' => new UsesTrait,
+            'hasAttribute' => new HasAttribute,
+            'extends' => new ExtendsClass,
+            'isAbstract' => new IsAbstract,
+            'isFinal' => new IsFinal,
+            'hasMethod' => new HasMethod,
+            'hasProperty' => new HasProperty,
+            'nameMatches' => new NameMatches,
+        ];
     }
 }
