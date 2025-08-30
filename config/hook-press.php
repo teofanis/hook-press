@@ -65,22 +65,19 @@ return [
     'store' => [
         'driver' => 'file', // 'file' or 'cache'
         'file' => [
-            'path' => 'bootstrap/cache/hookpress.php',
+            'path' => 'bootstrap/cache/hook-press.php',
         ],
         'cache' => [
             'store' => null,  // null = default cache store
-            'key' => 'hookpress:map',
+            'key' => 'hook-press.:map',
             'ttl' => null,    // forever
         ],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Composer hooks
-    |--------------------------------------------------------------------------
-    | Which events should trigger a rebuild.
-    */
     'composer' => [
-        'on' => ['post-install-cmd', 'post-update-cmd'],
+        'artisan_command' => 'hook-press.:build',
+        // Scanner will read the classmap from here used only by HookPress.
+        'classmap_path' => '/vendor/composer/autoload_classmap.php',
     ],
+
 ];

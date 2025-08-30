@@ -20,8 +20,9 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+
     <logging>
-        <junit outputFile="build/report.junit.xml"/>
+        <junit outputFile="build/report.junit.xml" />
     </logging>
     <source>
         <include>
