@@ -1,9 +1,23 @@
+<p align="center">
+  <img src="assets/logo.png" alt="HookPress logo" width="500" />
+</p>
+
 # HookPress is a Laravel package that uses Composer hooks to automatically discover, filter, and cache classes, traits, and interfaces in your application
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/teofanis/hook-press.svg?style=flat-square)](https://packagist.org/packages/teofanis/hook-press)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/teofanis/hook-press/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/teofanis/hook-press/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/teofanis/hook-press.svg?style=flat-square)](https://packagist.org/packages/teofanis/hook-press)
+<p align="center">
+  <a href="https://packagist.org/packages/teofanis/hook-press">
+    <img alt="Latest Version on Packagist" src="https://img.shields.io/packagist/v/teofanis/hook-press.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/teofanis/hook-press/actions/workflows/run-tests.yml">
+    <img alt="GitHub Tests Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/run-tests.yml?branch=main&amp;label=tests&amp;style=flat-square">
+  </a>
+  <a href="https://github.com/teofanis/hook-press/actions/workflows/fix-php-code-style-issues.yml">
+    <img alt="GitHub Code Style Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/fix-php-code-style-issues.yml?branch=main&amp;label=code%20style&amp;style=flat-square">
+  </a>
+  <a href="https://packagist.org/packages/teofanis/hook-press">
+    <img alt="Total Downloads" src="https://img.shields.io/packagist/dt/teofanis/hook-press.svg?style=flat-square">
+  </a>
+</p>
 
 HookPress builds a static class map during Composer install/update so your app can look up “discoverable” classes in O(1) time at runtime. No boot-time reflection, no recursive directory scans, no config arrays to maintain.
 
