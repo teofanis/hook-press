@@ -20,6 +20,10 @@ class ConditionEvaluator
 
     /**
      * @param  array<int|string,mixed>  $conditions
+     *
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
      */
     public function passes(ReflectionClass $ref, array $conditions): bool
     {
@@ -28,6 +32,10 @@ class ConditionEvaluator
         }
         foreach ($conditions as $key => $value) {
             [$name, $arg] = is_int($key) ? [$value, null] : [$key, $value];
+
+            if (! is_string($name)) {
+                continue;
+            }
 
             $condition = $this->resolve($name);
 

@@ -9,6 +9,11 @@ use ReflectionClass;
 
 class IsFinal implements Condition
 {
+    /**
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
+     */
     public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {
         return $ref->isFinal();

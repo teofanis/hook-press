@@ -9,12 +9,17 @@ use ReflectionClass;
 
 class HasAttribute implements Condition
 {
-    public function passes(ReflectionClass $ref, mixed $attribute = null): bool
+    /**
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
+     */
+    public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {
-        if (! is_string($attribute) || $attribute === '') {
+        if (! is_string($arg) || $arg === '') {
             return false;
         }
 
-        return $ref->getAttributes($attribute) !== [];
+        return $ref->getAttributes($arg) !== [];
     }
 }

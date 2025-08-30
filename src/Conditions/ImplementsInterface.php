@@ -9,6 +9,11 @@ use ReflectionClass;
 
 class ImplementsInterface implements Condition
 {
+    /**
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
+     */
     public function passes(ReflectionClass $ref, mixed $interface = null): bool
     {
         if (! is_string($interface) || $interface === '') {

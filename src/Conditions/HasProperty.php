@@ -13,6 +13,10 @@ class HasProperty implements Condition
      * Arg can be:
      *  - string property name
      *  - array: ['name' => 'driver', 'public' => true, 'static' => false, 'type' => 'string|FQCN']
+     *
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
      */
     public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {

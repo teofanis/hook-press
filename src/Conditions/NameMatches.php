@@ -13,6 +13,10 @@ class NameMatches implements Condition
      * Arg can be:
      *  - string regex (applied to FQCN)
      *  - array: ['pattern' => '/Controller$/', 'short' => true]  // short => use short name
+     *
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
      */
     public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {
