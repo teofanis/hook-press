@@ -2,9 +2,9 @@
 
 namespace HookPress\HookPress\Tests;
 
+use HookPress\HookPress\HookPressServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use HookPress\HookPress\HookPressServiceProvider;
 
 class TestCase extends Orchestra
 {

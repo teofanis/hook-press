@@ -2,9 +2,9 @@
 
 namespace HookPress\HookPress;
 
+use HookPress\HookPress\Commands\HookPressCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use HookPress\HookPress\Commands\HookPressCommand;
 
 class HookPressServiceProvider extends PackageServiceProvider
 {
