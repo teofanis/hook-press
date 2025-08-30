@@ -38,7 +38,7 @@ expect()->extend('toBeValidAutoloadClassmap', function (): \Pest\Expectation {
 
     if ($countMap !== $countValidGenerated) {
         $path = base_path(str(config('hook-press.composer.classmap_path', 'tests/.tmp/autoload_classmap.php')));
-        test()->fail("Your fixture autoload_classmap.php probably has a typo as it contains invalid paths. Check your config and the generated file: {$path}");
+        test()->fail("Your fixture autoload_classmap.php probably has a typo as it contains invalid paths. ({$countValidGenerated}/{$countMap}) Check your config and the generated file: {$path}");
     }
 
     return expect($countMap)->toBe($countValidGenerated);

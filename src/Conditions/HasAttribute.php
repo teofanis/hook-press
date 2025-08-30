@@ -9,12 +9,12 @@ use ReflectionClass;
 
 class HasAttribute implements Condition
 {
-    public function passes(ReflectionClass $ref, mixed $arg = null): bool
+    public function passes(ReflectionClass $ref, mixed $attribute = null): bool
     {
-        if (! is_string($arg) || $arg === '') {
+        if (! is_string($attribute) || $attribute === '') {
             return false;
         }
 
-        return $ref->getAttributes($arg) !== [];
+        return $ref->getAttributes($attribute) !== [];
     }
 }

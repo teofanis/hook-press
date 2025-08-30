@@ -7,9 +7,15 @@ namespace HookPress;
 use HookPress\Commands\BuildCommand;
 use HookPress\Commands\ClearCommand;
 use HookPress\Commands\ShowCommand;
+use HookPress\Conditions\ExtendsClass;
 use HookPress\Conditions\HasAttribute;
+use HookPress\Conditions\HasMethod;
+use HookPress\Conditions\HasProperty;
 use HookPress\Conditions\ImplementsInterface;
+use HookPress\Conditions\IsAbstract;
+use HookPress\Conditions\IsFinal;
 use HookPress\Conditions\IsInstantiable;
+use HookPress\Conditions\NameMatches;
 use HookPress\Conditions\UsesTrait;
 use HookPress\Support\ConditionEvaluator;
 use HookPress\Support\HookPressManager;
@@ -63,6 +69,12 @@ class HookPressServiceProvider extends PackageServiceProvider
                 'implementsInterface' => new ImplementsInterface,
                 'usesTrait' => new UsesTrait,
                 'hasAttribute' => new HasAttribute,
+                'extends' => new ExtendsClass,
+                'isAbstract' => new IsAbstract,
+                'isFinal' => new IsFinal,
+                'hasMethod' => new HasMethod,
+                'hasProperty' => new HasProperty,
+                'nameMatches' => new NameMatches,
             ];
 
             return new ConditionEvaluator($app, $builtIns);

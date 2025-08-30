@@ -89,6 +89,9 @@ class TestCase extends Orchestra
             \App\Classes\PayoutMethods\AbstractBase::class => realpath(__DIR__.'/Fixtures/App/Classes/PayoutMethods/AbstractBase.php'),
             \App\Classes\Other\Unrelated::class => realpath(__DIR__.'/Fixtures/App/Classes/Other/Unrelated.php'),
             \App\Classes\Attributed\Marked::class => realpath(__DIR__.'/Fixtures/App/Classes/Attributed/Marked.php'),
+            \App\Classes\PayoutMethods\ChildOfAbstract::class => realpath(__DIR__.'/Fixtures/App/Classes/PayoutMethods/ChildOfAbstract.php'),
+            \App\Classes\Finals\FinalService::class => realpath(__DIR__.'/Fixtures/App/Classes/Finals/FinalService.php'),
+            \App\Classes\WithProps\DriverService::class => realpath(__DIR__.'/Fixtures/App/Classes/WithProps/DriverService.php'),
         ];
 
         expect($map)->toBeValidAutoloadClassmap();

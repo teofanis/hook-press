@@ -9,12 +9,12 @@ use ReflectionClass;
 
 class UsesTrait implements Condition
 {
-    public function passes(ReflectionClass $ref, mixed $arg = null): bool
+    public function passes(ReflectionClass $ref, mixed $trait = null): bool
     {
-        if (! is_string($arg) || $arg === '') {
+        if (! is_string($trait) || $trait === '') {
             return false;
         }
 
-        return in_array($arg, $ref->getTraitNames(), true);
+        return in_array($trait, $ref->getTraitNames(), true);
     }
 }

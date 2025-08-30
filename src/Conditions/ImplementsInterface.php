@@ -9,12 +9,12 @@ use ReflectionClass;
 
 class ImplementsInterface implements Condition
 {
-    public function passes(ReflectionClass $ref, mixed $arg = null): bool
+    public function passes(ReflectionClass $ref, mixed $interface = null): bool
     {
-        if (! is_string($arg) || $arg === '') {
+        if (! is_string($interface) || $interface === '') {
             return false;
         }
 
-        return $ref->implementsInterface($arg);
+        return $ref->implementsInterface($interface);
     }
 }

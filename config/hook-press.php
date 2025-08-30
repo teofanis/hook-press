@@ -38,6 +38,48 @@ return [
                 // 'hasAttribute' => 'App\\Attributes\\Discoverable',
             ],
         ],
+        // Find all Eloquent models (non-abstract)
+        'models' => [
+            'namespaces' => ['App\\Models\\'],
+            'conditions' => [
+                'extends' => \Illuminate\Database\Eloquent\Model::class,
+                'isInstantiable',
+            ],
+        ],
+        // Invokables (handlers with __invoke)
+        'invokables' => [
+            'namespaces' => ['App\\Actions\\', 'App\\Jobs\\'],
+            'conditions' => [
+                'isInstantiable',
+                // method existence + visibility
+                'hasMethod' => ['name' => '__invoke', 'public' => true],
+            ],
+        ],
+        // Controllers (name ends with Controller)
+        'controllers' => [
+            'namespaces' => ['App\\Http\\Controllers\\'],
+            'conditions' => [
+                'isInstantiable',
+                'nameMatches' => '/Controller$/',
+            ],
+        ],
+        // Services that expose a specific API
+        'drivers' => [
+            'namespaces' => ['App\\Services\\'],
+            'conditions' => [
+                'isInstantiable',
+                'hasMethod' => ['name' => 'handle', 'public' => true, 'returns' => 'void'],
+                'hasProperty' => ['name' => 'driver', 'public' => true, 'type' => 'string'],
+            ],
+        ],
+
+        // Final singletons / leaf implementations
+        'final_services' => [
+            'namespaces' => ['App\\Services\\'],
+            'conditions' => [
+                'isFinal',
+            ],
+        ],
     ],
 
     /*
