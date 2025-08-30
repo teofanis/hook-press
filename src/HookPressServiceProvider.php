@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HookPress\HookPress;
 
-use HookPress\HookPress\Commands\HookPressCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,9 +18,6 @@ class HookPressServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('hook-press')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_hook_press_table')
-            ->hasCommand(HookPressCommand::class);
+            ->hasConfigFile();
     }
 }

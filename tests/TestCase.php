@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HookPress\HookPress\Tests;
 
 use HookPress\HookPress\HookPressServiceProvider;
@@ -8,12 +10,13 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'HookPress\\HookPress\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName): string => 'HookPress\\HookPress\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -24,7 +27,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 
