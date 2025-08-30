@@ -49,7 +49,7 @@ class HookPressServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        require_once __DIR__ . '/polyfills.php';
+        require_once __DIR__.'/polyfills.php';
 
         $this->app->singleton(Repository::class, fn (Application $app): \HookPress\Support\Repository => new Repository($app->make(Filesystem::class), $app['config']->get('hook-press.store')));
         $this->app->singleton(Inspector::class, fn (): \HookPress\Support\Inspector => new Inspector);

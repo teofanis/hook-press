@@ -1,6 +1,8 @@
 <?php
 
-if (!function_exists('array_any')) {
+declare(strict_types=1);
+
+if (! function_exists('array_any')) {
     function array_any(array $array, callable $callback): bool
     {
         foreach ($array as $value) {
@@ -8,6 +10,7 @@ if (!function_exists('array_any')) {
                 return true;
             }
         }
+
         return false;
     }
 }
