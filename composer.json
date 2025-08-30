@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "teofanis/hook-press",
+    "description": "HookPress is a Laravel package that uses Composer hooks to automatically discover, filter, and cache classes, traits, and interfaces in your application",
     "keywords": [
-        ":vendor_name",
+        "Teofanis Papadopulos",
         "laravel",
-        ":package_slug"
+        "hook-press"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/teofanis/hook-press",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Teofanis Papadopulos",
+            "email": "teos_97@hotmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "HookPress\\HookPress\\": "src/",
+            "HookPress\\HookPress\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "HookPress\\HookPress\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "HookPress\\HookPress\\HookPressServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "HookPress": "HookPress\\HookPress\\Facades\\HookPress"
             }
         }
     },

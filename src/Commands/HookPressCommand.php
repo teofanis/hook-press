@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace HookPress\HookPress\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class HookPressCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'hook-press';
 
     public $description = 'My command';
 

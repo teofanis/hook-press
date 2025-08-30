@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace HookPress\HookPress;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use HookPress\HookPress\Commands\HookPressCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class HookPressServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('hook-press')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_hook_press_table')
+            ->hasCommand(HookPressCommand::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace HookPress\HookPress\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
