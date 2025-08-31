@@ -1,0 +1,73 @@
+name: Manual Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: "Release type"
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+      dry_run:
+        description: "Dry run (skip pushing)"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: manual-tag-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main (with tags)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Update main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main --tags
+          git checkout main
+          git pull --rebase origin main
+
+      - name: Run composer release script
+        run: |
+          case "${{ github.event.inputs.release_type }}" in
+            patch) composer release:patch ;;
+            minor) composer release:minor ;;
+            major) composer release:major ;;
+            *) echo "Unknown release type"; exit 1 ;;
+          esac
+
+      - name: Push commit and tags
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git push origin HEAD:main
+          git push origin --tags
+
+      - name: Show new tag
+        run: git describe --tags --abbrev=0 || true
