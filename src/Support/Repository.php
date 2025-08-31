@@ -10,11 +10,19 @@ class Repository
 {
     protected const DEFAULT_FILE_CACHE_PATH = 'bootstrap/cache/hook-press.php';
 
+    protected const DEFAULT_CACHE_KEY = 'hook-press:map';
+
     public function __construct(
         protected Filesystem $files,
+        /**
+         * @var array<string,mixed> $config
+         */
         protected array $config
     ) {}
 
+    /**
+     * @param  array<string,mixed>  $map
+     */
     public function put(array $map): void
     {
         $driver = data_get($this->config, 'driver', 'file');
@@ -43,6 +51,9 @@ class Repository
         $this->files->move($tmp, $path);
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function get(): array
     {
         $driver = data_get($this->config, 'driver', 'file');

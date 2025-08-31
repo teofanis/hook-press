@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace HookPress\Support;
 
 use ReflectionClass;
-use ReflectionException;
 
 class Inspector
 {
     /**
      * Safe Reflection Factory
+     *
+     * @return ReflectionClass<object>|null
      */
     public function reflect(string $class): ?ReflectionClass
     {
@@ -18,13 +19,12 @@ class Inspector
             return null;
         }
 
-        try {
-            return new ReflectionClass($class);
-        } catch (ReflectionException) {
-            return null;
-        }
+        return new ReflectionClass($class);
     }
 
+    /**
+     * @param  string|class-string  $class
+     */
     public function isTrait(string $class): bool
     {
         $ref = $this->reflect($class);

@@ -55,41 +55,73 @@ class HookPressServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        require_once __DIR__.'/polyfills.php';
+        $this->loadPolyfills();
+        $this->configureBindings();
+    }
 
-        $this->app->singleton(Repository::class, fn (Application $app): \HookPress\Support\Repository => new Repository($app->make(Filesystem::class), $app['config']->get('hook-press.store')));
-        $this->app->singleton(Inspector::class, fn (): \HookPress\Support\Inspector => new Inspector);
+    private function configureBindings(): void
+    {
+        $this->app->singleton(Repository::class, function (Application $app): Repository {
+            /** @var array<string, mixed> $config */
+            $config = $app['config']->get('hook-press.store', []);
 
-        $this->app->singleton(Scanner::class, fn (Application $app): \HookPress\Support\Scanner => new Scanner($app['config']->get('hook-press.roots')));
+            return new Repository($app->make(Filesystem::class), $config);
+        });
 
-        $this->app->singleton(ConditionEvaluator::class, function (Application $app): \HookPress\Support\ConditionEvaluator {
-            // Built-in conditions registry
-            $builtIns = [
-                'isInstantiable' => new IsInstantiable,
-                'implementsInterface' => new ImplementsInterface,
-                'usesTrait' => new UsesTrait,
-                'hasAttribute' => new HasAttribute,
-                'extends' => new ExtendsClass,
-                'isAbstract' => new IsAbstract,
-                'isFinal' => new IsFinal,
-                'hasMethod' => new HasMethod,
-                'hasProperty' => new HasProperty,
-                'nameMatches' => new NameMatches,
-            ];
+        $this->app->singleton(Inspector::class, fn (): Inspector => new Inspector);
+
+        $this->app->singleton(Scanner::class, function (Application $app): Scanner {
+            /** @var array<int, string> $roots */
+            $roots = $app['config']->get('hook-press.roots', ['App\\']);
+
+            return new Scanner($roots);
+        });
+
+        $this->app->bind(ConditionEvaluator::class, function (Application $app): ConditionEvaluator {
+            $builtIns = $this->getBuiltIns();
 
             return new ConditionEvaluator($app, $builtIns);
         });
 
-        $this->app->singleton(Mapper::class, fn (Application $app): \HookPress\Support\Mapper => new Mapper(
-            $app->make(Scanner::class),
-            $app->make(Inspector::class),
-            $app->make(ConditionEvaluator::class),
-            $app['config']->get('hook-press')
-        ));
+        $this->app->singleton(Mapper::class, function (Application $app): Mapper {
+            /** @var array<string, mixed> $config */
+            $config = $app['config']->get('hook-press', []);
 
-        $this->app->singleton(HookPressManager::class, fn ($app): \HookPress\Support\HookPressManager => new HookPressManager(
+            return new Mapper(
+                $app->make(Scanner::class),
+                $app->make(Inspector::class),
+                $app->make(ConditionEvaluator::class),
+                $config
+            );
+        });
+
+        $this->app->singleton(HookPressManager::class, fn (Application $app): HookPressManager => new HookPressManager(
             $app->make(Repository::class),
             $app->make(Mapper::class)
         ));
+    }
+
+    private function loadPolyfills(): void
+    {
+        require_once __DIR__.'/polyfills.php';
+    }
+
+    /**
+     * @return array<string, \HookPress\Contracts\Condition>
+     */
+    private function getBuiltIns(): array
+    {
+        return [
+            'isInstantiable' => new IsInstantiable,
+            'implementsInterface' => new ImplementsInterface,
+            'usesTrait' => new UsesTrait,
+            'hasAttribute' => new HasAttribute,
+            'extends' => new ExtendsClass,
+            'isAbstract' => new IsAbstract,
+            'isFinal' => new IsFinal,
+            'hasMethod' => new HasMethod,
+            'hasProperty' => new HasProperty,
+            'nameMatches' => new NameMatches,
+        ];
     }
 }

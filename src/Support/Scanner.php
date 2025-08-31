@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Scanner
 {
+    /** @var string COMPOSER_CLASS_MAP */
     protected const COMPOSER_CLASS_MAP = '/vendor/composer/autoload_classmap.php';
 
     /**
@@ -23,24 +24,31 @@ class Scanner
     public function classMap(): array
     {
         $basePath = function_exists('base_path') ? base_path() : getcwd();
-        $relative = ltrim((string) config('hook-press.composer.classmap_path', static::COMPOSER_CLASS_MAP), DIRECTORY_SEPARATOR);
+        $configPath = config('hook-press.composer.classmap_path', static::COMPOSER_CLASS_MAP);
+        if (! is_string($configPath)) {
+            $configPath = static::COMPOSER_CLASS_MAP;
+        }
+        $relative = ltrim($configPath, DIRECTORY_SEPARATOR);
         $path = $basePath.DIRECTORY_SEPARATOR.$relative;
 
         if (! file_exists($path)) {
             return [];
         }
 
-        /** @var array<string,string> $map */
         $map = require $path;
+        if (! is_array($map)) {
+            return [];
+        }
 
-        return is_array($map) ? $map : [];
+        /** @var array<string,string> $map */
+        return $map;
     }
 
     /**
      * Filter classes by namespace prefixes
      *
      * @param  array<int,string>  $prefixes
-     * @param array<string,string> [class => file]
+     * @return array<string,string> [class => file]
      */
     public function classesStartingWith(array $prefixes): array
     {

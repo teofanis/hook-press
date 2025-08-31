@@ -9,8 +9,17 @@ use ReflectionClass;
 
 class ExtendsClass implements Condition
 {
-    public function passes(ReflectionClass $ref, mixed $parent = null): bool
+    /**
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
+     */
+    public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {
-        return is_string($parent) && $parent !== '' && $ref->isSubclassOf($parent);
+        if (! is_string($arg) || $arg === '') {
+            return false;
+        }
+
+        return $ref->isSubclassOf($arg);
     }
 }

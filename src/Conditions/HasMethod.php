@@ -14,6 +14,10 @@ class HasMethod implements Condition
      * Arg can be:
      *  - string method name
      *  - array: ['name' => 'handle', 'public' => true, 'static' => false, 'returns' => 'void|FQCN']
+     *
+     * @template T of object
+     *
+     * @param  ReflectionClass<T>  $ref
      */
     public function passes(ReflectionClass $ref, mixed $arg = null): bool
     {

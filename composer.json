@@ -4,14 +4,37 @@
     "keywords": [
         "Teofanis Papadopulos",
         "laravel",
-        "hook-press"
+        "hook-press",
+        "hookpress",
+        "hook-press",
+        "laravel",
+        "laravel-package",
+        "composer-hook",
+        "composer-scripts",
+        "post-install-cmd",
+        "post-update-cmd",
+        "class-discovery",
+        "service-discovery",
+        "driver-discovery",
+        "classmap",
+        "autoload",
+        "reflection",
+        "php8-attributes",
+        "traits",
+        "interfaces",
+        "registry",
+        "artisan",
+        "cache",
+        "bootstrap-cache",
+        "psr-4",
+        "plugin-discovery"
     ],
     "homepage": "https://github.com/teofanis/hook-press",
     "license": "MIT",
     "authors": [
         {
             "name": "Teofanis Papadopulos",
-            "email": "teos_97@hotmail.com",
+            "email": "hook-press@teofanis-cloud.com",
             "role": "Developer"
         }
     ],
@@ -30,6 +53,8 @@
         "pestphp/pest": "^4.0",
         "pestphp/pest-plugin-arch": "^4.0",
         "pestphp/pest-plugin-laravel": "^4.0",
+        "pestphp/pest-plugin-profanity": "^4.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
@@ -55,7 +80,7 @@
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
         "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test:ci": "vendor/bin/pest --coverage --min=100 --type-coverage --min=100 --profanity --ci",
         "rector": "vendor/bin/rector",
         "format": "vendor/bin/pint"
     },
