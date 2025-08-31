@@ -71,8 +71,8 @@ Wire HookPress to run when composer installs/updates
 ```
 > **_NOTE:_** You can use artisan directly if you prefer
 ```json
-"post-install-cmd": ["@php artisan hookpress:build --no-ansi --no-interaction"],
-"post-update-cmd":  ["@php artisan hookpress:build --no-ansi --no-interaction"]
+"post-install-cmd": ["@php artisan hook-press:build --no-ansi --no-interaction"],
+"post-update-cmd":  ["@php artisan hook-press:build --no-ansi --no-interaction"]
 
 ```
  
@@ -113,20 +113,20 @@ return [
     // Where the computed map is stored
     'store' => [
         'driver' => 'file', // 'file' or 'cache'
-        'file'   => ['path'  => 'bootstrap/cache/hookpress.php'],
+        'file'   => ['path'  => 'bootstrap/cache/hook-press.php'],
         'cache'  => ['store' => null, 'key' => 'hookpress:map', 'ttl' => null],
     ],
 
     // Where HookPress reads the Composer classmap from (leave as default in apps)
     'composer' => [
         'classmap_path'   => 'vendor/composer/autoload_classmap.php',
-        'artisan_command' => 'hookpress:build',
+        'artisan_command' => 'hook-press:build',
     ],
 ];
 ```
 ### How it works
 
-On composer install/update (or php artisan hookpress:build), HookPress scans your Composer classmap, applies your conditions, and writes a single PHP file (or cache entry) with the results.
+On composer install/update (or php artisan hook-press:build), HookPress scans your Composer classmap, applies your conditions, and writes a single PHP file (or cache entry) with the results.
 
 At runtime you read from that file/cache—no reflection or directory walking.
 
@@ -151,11 +151,11 @@ HookPress::clear();
 
 ## Artisan Commands 
 ```bash
-php artisan hookpress:build        # compute and store the map
-php artisan hookpress:show         # print the map
-php artisan hookpress:show payout_methods
-php artisan hookpress:clear
-php artisan hookpress:build --no-traits  # skip trait grouping
+php artisan hook-press:build        # compute and store the map
+php artisan hook-press:show         # print the map
+php artisan hook-press:show payout_methods
+php artisan hook-press:clear
+php artisan hook-press:build --no-traits  # skip trait grouping
 
 ```
 
