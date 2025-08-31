@@ -121,7 +121,8 @@ return [
     ],
 ];
 ```
-### How it works 
+### How it works
+
 On composer install/update (or php artisan hookpress:build), HookPress scans your Composer classmap, applies your conditions, and writes a single PHP file (or cache entry) with the results.
 
 At runtime you read from that file/cache—no reflection or directory walking.
