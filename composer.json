@@ -66,7 +66,9 @@
         "psr-4": {
             "HookPress\\": "src/"
         },
-        "files": ["src/polyfills.php"]
+        "files": [
+            "src/polyfills.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -121,5 +123,6 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "version": "0.1.0"
 }
