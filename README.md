@@ -6,16 +6,19 @@
 
 <p align="center">
   <a href="https://packagist.org/packages/teofanis/hook-press">
-    <img alt="Latest Version on Packagist" src="https://img.shields.io/packagist/v/teofanis/hook-press.svg?style=flat-square">
+    <img alt="Latest Version on Packagist" src="https://img.shields.io/packagist/v/teofanis/hook-press.svg">
   </a>
   <a href="https://github.com/teofanis/hook-press/actions/workflows/run-tests.yml">
-    <img alt="GitHub Tests Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/run-tests.yml?branch=main&amp;label=tests&amp;style=flat-square">
+    <img alt="GitHub Tests Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/run-tests.yml?branch=main&amp;label=tests&amp">
   </a>
   <a href="https://github.com/teofanis/hook-press/actions/workflows/fix-php-code-style-issues.yml">
-    <img alt="GitHub Code Style Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/fix-php-code-style-issues.yml?branch=main&amp;label=code%20style&amp;style=flat-square">
+    <img alt="GitHub Code Style Action Status" src="https://img.shields.io/github/actions/workflow/status/teofanis/hook-press/fix-php-code-style-issues.yml?branch=main&amp;label=code%20style&amp">
   </a>
   <a href="https://packagist.org/packages/teofanis/hook-press">
-    <img alt="Total Downloads" src="https://img.shields.io/packagist/dt/teofanis/hook-press.svg?style=flat-square">
+    <img alt="Total Downloads" src="https://img.shields.io/packagist/dt/teofanis/hook-press.svg">
+  </a>
+<a href="https://github.com/teofanis/hook-press/blob/main/LICENSE.md">
+    <img alt="Licence" src="https://img.shields.io/packagist/l/teofanis/hook-press.svg">
   </a>
 </p>
 
