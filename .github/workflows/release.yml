@@ -10,45 +10,15 @@ permissions:
 
 jobs:
   release:
+    name: Release pushed tag
     runs-on: ubuntu-22.04
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v4
-
       - name: Create release
-        id: create
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
         run: |
           gh release create "$tag" \
-            --repo="$GITHUB_REPOSITORY" \
-            --title="${tag#v}" \
-            --generate-notes
-
-      - name: Read release data
-        id: rel
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
-        run: |
-          NAME=$(gh release view "$tag" --json name --jq .name)
-          BODY=$(gh release view "$tag" --json body --jq .body)
-          echo "name=$NAME" >> $GITHUB_OUTPUT
-          # Preserve newlines safely:
-          echo "body<<EOF" >> $GITHUB_OUTPUT
-          printf "%s\n" "$BODY" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
-        with:
-          latest-version: ${{ steps.rel.outputs.name }}
-          release-notes: ${{ steps.rel.outputs.body }}
-
-      - name: Commit updated CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          branch: main
-          commit_message: "chore: update `CHANGELOG.md`"
-          file_pattern: CHANGELOG.md
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${tag#v}" \
+              --generate-notes

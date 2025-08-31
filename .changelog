@@ -45,7 +45,7 @@ return [
   'compareUrlFormat' => '{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}',
   'issueUrlFormat' => '{{host}}/{{owner}}/{{repository}}/issues/{{id}}',
   'userUrlFormat' => '{{host}}/{{user}}',
-  'releaseCommitMessageFormat' => 'chore(release): {{currentTag}}',
+  'releaseCommitMessageFormat' => 'chore(release): v{{currentTag}}',
   'hiddenVersionSeparator' => false,
   'preRun' => null,
   'postRun' => null,
