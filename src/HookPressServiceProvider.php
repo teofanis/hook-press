@@ -77,7 +77,7 @@ class HookPressServiceProvider extends PackageServiceProvider
             return new Scanner($roots);
         });
 
-        $this->app->singleton(ConditionEvaluator::class, function (Application $app): ConditionEvaluator {
+        $this->app->bind(ConditionEvaluator::class, function (Application $app): ConditionEvaluator {
             $builtIns = $this->getBuiltIns();
 
             return new ConditionEvaluator($app, $builtIns);

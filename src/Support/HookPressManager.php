@@ -13,6 +13,8 @@ class HookPressManager
 
     /**
      * Get the entire map or single map for a given type.
+     *
+     * @return array<string,mixed>
      */
     public function map(?string $type = null): array
     {
@@ -23,6 +25,8 @@ class HookPressManager
 
     /**
      * Get the classes that use a given trait.
+     *
+     * @return array<string,mixed>
      */
     public function classesUsing(string $trait): array
     {
@@ -34,6 +38,8 @@ class HookPressManager
 
     /**
      * Build and persist the map.
+     *
+     * @return array<string,mixed>
      */
     public function refresh(): array
     {

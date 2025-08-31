@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Scanner
 {
+    /** @var string COMPOSER_CLASS_MAP */
     protected const COMPOSER_CLASS_MAP = '/vendor/composer/autoload_classmap.php';
 
     /**
@@ -34,10 +35,13 @@ class Scanner
             return [];
         }
 
-        /** @var array<string,string> $map */
         $map = require $path;
+        if (! is_array($map)) {
+            return [];
+        }
 
-        return is_array($map) ? $map : [];
+        /** @var array<string,string> $map */
+        return $map;
     }
 
     /**

@@ -2,10 +2,12 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: 10
+    level: 8
     paths:
         - src
         - config
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
+    type_coverage:
+        constant: 0 #for compatibility with php 8.

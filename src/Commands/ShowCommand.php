@@ -17,8 +17,8 @@ class ShowCommand extends Command
     {
         $type = $this->argument('type');
 
-        $map = $manager->map($type);
-        if ($type) {
+        $map = $manager->map(is_string($type) ? $type : null);
+        if ($type && is_string($type)) {
             if ($map === []) {
                 $this->components->warn("No entries for '{$type}'.");
 

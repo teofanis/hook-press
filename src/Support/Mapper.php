@@ -15,6 +15,7 @@ class Mapper
         protected Scanner $scanner,
         protected Inspector $inspector,
         protected ConditionEvaluator $evaluator,
+        /** @var array<string,mixed> $config */
         protected array $config
     ) {}
 
@@ -110,6 +111,8 @@ class Mapper
 
     /**
      * Exclusion logic (by exact class, namespace prefix, or regex)
+     *
+     * @param  array<string,mixed>  $exclusions
      */
     protected function excluded(string $class, array $exclusions): bool
     {
@@ -127,6 +130,6 @@ class Mapper
 
         $regexes = (array) data_get($exclusions, 'regex', []);
 
-        return array_any($regexes, fn ($pattern): bool => @preg_match($pattern, $class) === 1);
+        return array_any($regexes, fn (string $pattern): bool => @preg_match($pattern, $class) === 1);
     }
 }

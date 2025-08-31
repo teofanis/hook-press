@@ -31,7 +31,7 @@ class BuildCommand extends Command
 
         foreach ($map as $key => $value) {
             if ($key === (config('hook-press.traits.group_key', 'traits'))) {
-                $total = array_sum(array_map(fn ($arr): int => count($arr), $value));
+                $total = array_sum(array_map(fn (array $arr): int => count($arr), $value));
                 $this->components->twoColumnDetail("• {$key}", "{$total} classes across ".count($value).' traits');
 
                 continue;

@@ -14,9 +14,15 @@ class Repository
 
     public function __construct(
         protected Filesystem $files,
+        /**
+         * @var array<string,mixed> $config
+         */
         protected array $config
     ) {}
 
+    /**
+     * @param  array<string,mixed>  $map
+     */
     public function put(array $map): void
     {
         $driver = data_get($this->config, 'driver', 'file');
@@ -45,6 +51,9 @@ class Repository
         $this->files->move($tmp, $path);
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function get(): array
     {
         $driver = data_get($this->config, 'driver', 'file');
