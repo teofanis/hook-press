@@ -4,6 +4,16 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [0.1.6](https://github.com/teofanis/hook-press/compare/v0.1.5...v0.1.6) (2025-08-31)
+
+### Continuous Integrations
+
+* Add tag.yaml workflow (#11) ([8b1701](https://github.com/teofanis/hook-press/commit/8b1701c1a188904008011cb29d3bb12b9b886adf))
+* Update tags to use secret token ([f06715](https://github.com/teofanis/hook-press/commit/f06715d6ef4d1b6212d5ba638e83d041b7ffc0c2))
+
+
+---
+
 ## [0.1.5](https://github.com/teofanis/hookpress/compare/v0.1.4...v0.1.5) (2025-08-31)
 
 ### Continuous Integrations
