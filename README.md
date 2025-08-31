@@ -22,6 +22,7 @@
 HookPress builds a static class map during Composer install/update so your app can look up “discoverable” classes in O(1) time at runtime. No boot-time reflection, no recursive directory scans, no config arrays to maintain.
 
 ## Why?
+
 I’ve used this in production for a while to auto-discover things like payment methods and populate lists/registries without hand-wiring every class. It’s been handy for pluggable components (drivers, actions, jobs) where “put the class in the right namespace” should be enough.
 
 ## Typical uses
@@ -33,7 +34,6 @@ I’ve used this in production for a while to auto-discover things like payment 
 - Discover classes marked by attributes (e.g. #[Discoverable]).
 
 - Find invokables or classes with particular methods/properties for handler pipelines.
-
 
 ## Requirements
 
