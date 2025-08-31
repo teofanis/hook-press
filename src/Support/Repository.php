@@ -29,7 +29,7 @@ class Repository
 
         if ($driver === 'cache') {
             $store = data_get($this->config, 'cache.store');
-            $key = data_get($this->config, 'cache.key', 'hook-press.:map');
+            $key = data_get($this->config, 'cache.key', 'hook-press:map');
             $ttl = data_get($this->config, 'cache.ttl');
 
             $cache = cache()->store($store);
@@ -60,7 +60,7 @@ class Repository
 
         if ($driver === 'cache') {
             $store = data_get($this->config, 'cache.store');
-            $key = data_get($this->config, 'cache.key', 'hook-press.:map');
+            $key = data_get($this->config, 'cache.key', 'hook-press:map');
 
             return (array) cache()->store($store)->get($key, []);
         }
@@ -77,7 +77,7 @@ class Repository
 
         if ($driver === 'cache') {
             $store = data_get($this->config, 'cache.store');
-            $key = data_get($this->config, 'cache.key', 'hook-press.:map');
+            $key = data_get($this->config, 'cache.key', 'hook-press:map');
             cache()->store($store)->forget($key);
 
             return;
