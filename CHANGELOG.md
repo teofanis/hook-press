@@ -4,6 +4,15 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [0.1.3](https://github.com/teofanis/hookpress/compare/v0.1.2...v0.1.3) (2025-08-31)
+
+### Continuous Integrations
+
+* Update release job ([9fef40](https://github.com/teofanis/hookpress/commit/9fef407542a5f5df6881468d01bf31412bc2f228))
+
+
+---
+
 ## [0.1.2](https://github.com/teofanis/hookpress/compare/v0.1.1...v0.1.2) (2025-08-31)
 
 ### Continuous Integrations
