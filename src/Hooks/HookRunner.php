@@ -14,12 +14,12 @@ class HookRunner
 {
     public static function postInstall(Event $event): void
     {
-        static::runArtisan(configKey: 'hook-press.composer.artisan_command', defaultCommand: 'hook-press.:build', event: $event);
+        static::runArtisan(configKey: 'hook-press.composer.artisan_command', defaultCommand: 'hook-press:build', event: $event);
     }
 
     public static function postUpdate(Event $event): void
     {
-        static::runArtisan(configKey: 'hook-press.composer.artisan_command', defaultCommand: 'hook-press.:build', event: $event);
+        static::runArtisan(configKey: 'hook-press.composer.artisan_command', defaultCommand: 'hook-press:build', event: $event);
     }
 
     protected static function runArtisan(string $configKey, string $defaultCommand, Event $event): void

@@ -111,13 +111,13 @@ return [
         ],
         'cache' => [
             'store' => null,  // null = default cache store
-            'key' => 'hook-press.:map',
+            'key' => 'hook-press:map',
             'ttl' => null,    // forever
         ],
     ],
 
     'composer' => [
-        'artisan_command' => 'hook-press.:build',
+        'artisan_command' => 'hook-press:build',
         // Scanner will read the classmap from here used only by HookPress.
         'classmap_path' => '/vendor/composer/autoload_classmap.php',
     ],

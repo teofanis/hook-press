@@ -56,16 +56,16 @@ class TestCase extends Orchestra
             'store' => [
                 'driver' => 'file',
                 'file' => ['path' => 'bootstrap/cache/hook-press.php'],
-                'cache' => ['store' => 'array', 'key' => 'hook-press.:map', 'ttl' => null],
+                'cache' => ['store' => 'array', 'key' => 'hook-press:map', 'ttl' => null],
             ],
             'composer' => [
-                'artisan_command' => 'hook-press.:build',
+                'artisan_command' => 'hook-press:build',
                 'classmap_path' => 'tests/.tmp/autoload_classmap.php',
             ],
         ]);
 
         // Ensure vendor/composer dir exists for the fake classmap
-        (new Filesystem())->ensureDirectoryExists(base_path('vendor/composer'));
+        (new Filesystem)->ensureDirectoryExists(base_path('vendor/composer'));
     }
 
     /**
@@ -73,7 +73,7 @@ class TestCase extends Orchestra
      */
     protected function writeClassmap(): void
     {
-        $fs = new Filesystem();
+        $fs = new Filesystem;
 
         $fakeDir = base_path(str(config('hook-press.composer.classmap_path', 'tests/.tmp/autoload_classmap.php'))->beforeLast('/'));
         $fs->ensureDirectoryExists($fakeDir);
