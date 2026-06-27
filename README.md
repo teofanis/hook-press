@@ -75,7 +75,6 @@ Wire HookPress to run when composer installs/updates
 "post-update-cmd":  ["@php artisan hook-press:build --no-ansi --no-interaction"]
 
 ```
- 
 This is the contents of the published config file:
 
 ```php
