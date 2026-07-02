@@ -37,7 +37,7 @@ I’ve used this in production for a while to auto-discover things like payment 
 - Discover classes marked by attributes (e.g. #[Discoverable]).
 
 - Find invokables or classes with particular methods/properties for handler pipelines.
-
+- 
 ## Requirements
 
 - PHP 8.0+
@@ -256,7 +256,6 @@ class ConstructorTakesLogger implements Condition
 ],
 ```
 HookPress resolves unknown condition keys as classes via the container, so no extra registration is needed.
-
 
 ### Notes
 Build time scales with your classmap size, but it’s a one-off step during Composer or CI.
