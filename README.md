@@ -40,9 +40,9 @@ I’ve used this in production for a while to auto-discover things like payment 
 - 
 ## Requirements
 
-- PHP 8.0+
+- PHP 8.0+ (CI-tested on 8.4 and 8.5)
 
-- Laravel 9+
+- Laravel 9+ (CI-tested on 11, 12 and 13)
 
 ## Installation
 
