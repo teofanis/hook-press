@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HookPress\Conditions;
 
 use HookPress\Contracts\Condition;
+use HookPress\Support\TypeName;
 use ReflectionClass;
 use ReflectionException;
 
@@ -53,8 +54,7 @@ class HasMethod implements Condition
         }
 
         if (! empty($arg['returns']) && is_string($arg['returns'])) {
-            $type = $m->getReturnType();
-            $actual = $type ? ltrim((string) $type, '\\') : '';
+            $actual = ltrim(TypeName::from($m->getReturnType()), '\\');
             $expected = ltrim($arg['returns'], '\\');
             if ($expected !== '' && $actual !== $expected) {
                 return false;
