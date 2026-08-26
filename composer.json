@@ -123,6 +123,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "0.1.6"
+    "prefer-stable": true
 }
