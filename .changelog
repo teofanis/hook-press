@@ -23,7 +23,9 @@ return [
     'revert'   => ['label' => 'Reverts', 'description' => 'Reverts a previous commit'],
   ],
   'types' => ['feat', 'perf', 'fix', 'docs', 'refactor', 'style', 'test','build', 'ci'],
-  'packageBump' => true,
+  // Never write a 'version' field into composer.json: Composer trusts it over the
+  // git tag, so a stale value makes a freshly tagged release resolve as the old one.
+  'packageBump' => false,
   'packageBumps' => [],
   'packageLockCommit' => true,
   'ignoreTypes' => ['build','revert', 'chore'],
