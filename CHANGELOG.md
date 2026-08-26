@@ -4,6 +4,15 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [0.1.8](https://github.com/teofanis/hook-press/compare/v0.1.7...v0.1.8) (2026-08-26)
+
+### Bug Fixes
+
+* Drop the hardcoded version field so tagged releases resolve correctly (#22) ([f30ba7](https://github.com/teofanis/hook-press/commit/f30ba73d1889fb452a734e12fa4f4c6d9f6fc9b5))
+
+
+---
+
 ## [0.1.6](https://github.com/teofanis/hook-press/compare/v0.1.5...v0.1.6) (2025-08-31)
 
 ### Continuous Integrations
