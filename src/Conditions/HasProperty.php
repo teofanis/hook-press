@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HookPress\Conditions;
 
 use HookPress\Contracts\Condition;
+use HookPress\Support\TypeName;
 use ReflectionClass;
 
 class HasProperty implements Condition
@@ -48,8 +49,7 @@ class HasProperty implements Condition
         }
 
         if (! empty($arg['type']) && is_string($arg['type'])) {
-            $type = $p->getType();
-            $actual = $type ? ltrim((string) $type, '\\') : '';
+            $actual = ltrim(TypeName::from($p->getType()), '\\');
             $expected = ltrim($arg['type'], '\\');
             if ($expected !== '' && $actual !== $expected) {
                 return false;
